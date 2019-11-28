@@ -18,26 +18,28 @@
         files=files
         accept=videoMimeTypes
         extensions=videoExtensions
+        resourceName="pid"
         uploadUrl="/videos/upload/"
-        onStart=(action "setPreviewSrc")
-        onComplete=(action "updateSrc")
+        onComplete=(action "requestProcessing")
         onFailed=(action "resetSrcs")
         as |uploader|
     }}
-        <div class="relative{{unless (or previewSrc payload.src) " bg-whitegrey-l2"}}">
-            {{#if (or previewSrc payload.src)}}
-                <video src={{or previewSrc payload.src}} width={{payload.width}} height={{payload.height}} class="{{kg-style kgImgStyle sidebar=ui.hasSideNav}}">
+        <div class="relative{{unless payload.src " bg-whitegrey-l2"}}">
+            {{#if payload.src}}
+                <div style="padding-bottom: {{aspectRatio}}%; position: relative; height: 0; overflow: hidden;">
+                    <video src="{{payload.src}}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="{{kg-style kgVideoStyle sidebar=ui.hasSideNav}}" controls />
+                </div>
                 {{#if isDraggedOver}}
                     <div class="absolute absolute--fill flex items-center bg-black-60 pe-none">
                         <span class="db center sans-serif fw7 f7 white">
-                            Drop to replace image
+                            Drop to replace video
                         </span>
                     </div>
                 {{/if}}
             {{/if}}
 
             {{#if (or uploader.errors uploader.isUploading (not payload.src))}}
-                <div class="relative miw-100 flex items-center {{if (not previewSrc payload.src) "kg-media-placeholder ba b--whitegrey" "absolute absolute--fill bg-white-50"}}">
+                <div class="relative miw-100 flex items-center {{if (not payload.src) "kg-media-placeholder ba b--whitegrey" "absolute absolute--fill bg-white-50"}}">
                     {{#if uploader.errors}}
                         <span class="db absolute top-0 right-0 left-0 pl2 pr2 bg-red white sans-serif f7">
                             {{uploader.errors.firstObject.message}}
@@ -50,7 +52,14 @@
                         </span>
                     {{else if uploader.isUploading}}
                         {{uploader.progressBar}}
-                    {{else if (not previewSrc payload.src)}}
+                    {{else if isProcessing}}
+                        <div class="processing-container" data-pct="{{processingProgress}}">
+                            <svg class="processing-circle" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                                <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0" style="stroke-dashoffset: {{processingProgressCircle}}"></circle>
+                            </svg>
+                        </div>
+                    {{else if (not payload.src)}}
                         <button class="flex flex-column items-center center sans-serif fw4 f7 middarkgrey pa16 pt14 pb14 kg-image-button" onclick={{action "triggerFileDialog"}}>
                             {{svg-jar this.placeholder class="kg-placeholder-image"}}
                             <span class="mt2 midgrey">Click to select video</span>
