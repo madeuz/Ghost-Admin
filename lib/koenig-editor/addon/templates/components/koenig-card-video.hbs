@@ -27,7 +27,13 @@
         <div class="relative{{unless payload.src " bg-whitegrey-l2"}}">
             {{#if payload.src}}
                 <div style="padding-bottom: {{aspectRatio}}%; position: relative; height: 0; overflow: hidden;">
-                    <video src="{{payload.src}}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="{{kg-style kgVideoStyle sidebar=ui.hasSideNav}}" controls />
+                    <video
+                        src="{{payload.src}}"
+                        poster="{{payload.poster}}"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                        class="{{kg-style kgVideoStyle
+                        sidebar=ui.hasSideNav}}"
+                        controls />
                 </div>
                 {{#if isDraggedOver}}
                     <div class="absolute absolute--fill flex items-center bg-black-60 pe-none">
