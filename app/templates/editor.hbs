@@ -75,6 +75,7 @@
             onTitleChange=(action "updateTitleScratch")
             onTitleBlur=(action (perform saveTitle))
             body=(readonly post.scratch)
+            isDraft=(readonly post.isDraft)
             bodyPlaceholder=(concat "Begin writing your " post.displayName "...")
             bodyAutofocus=shouldFocusEditor
             onBodyChange=(action "updateScratch")
