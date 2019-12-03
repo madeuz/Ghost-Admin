@@ -38,7 +38,7 @@ export default Component.extend({
     uploadUrl: null,
     paramName: 'file',
     paramsHash: null,
-    resourceName: 'images',
+    resourceName: 'files',
     validate: null,
     allowUnsplash: false,
 

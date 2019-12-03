@@ -53,7 +53,7 @@ export default Component.extend({
     files: null,
     paramName: 'file',
     paramsHash: null,
-    resourceName: 'images',
+    resourceName: 'files',
     uploadUrl: null,
 
     // Interal attributes
