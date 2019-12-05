@@ -41,6 +41,8 @@ export default ApplicationSerializer.extend(EmbeddedRecordsMixin, {
         // Deprecated property (replaced with data.authors)
         delete json.author;
 
+        delete json.views;
+
         if (json.visibility === null) {
             delete json.visibility;
         }
