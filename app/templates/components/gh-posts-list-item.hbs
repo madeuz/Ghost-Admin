@@ -34,6 +34,10 @@
     {{/if}}
 {{/link-to}}
 
+{{#link-to "editor.edit" this.post.displayName this.post.id class="permalink gh-list-data gh-post-list-views" title="Edit this post"}}
+    <span class="nowrap">{{this.post.views}}</span>
+{{/link-to}}
+
 {{#link-to "editor.edit" this.post.displayName this.post.id class="permalink gh-list-data gh-post-list-updated" title="Edit this post"}}
     <span class="nowrap">{{gh-format-post-time this.post.updatedAtUTC draft=true}}</span>
 {{/link-to}}
