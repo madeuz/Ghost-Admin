@@ -259,6 +259,10 @@ export default Controller.extend({
 
         updateWordCount(counts) {
             this.set('wordCount', counts);
+        },
+
+        updateCharacterCount(counts) {
+            this.set('characterCount', counts);
         }
     },
 
@@ -647,6 +651,7 @@ export default Controller.extend({
         this.set('leaveEditorTransition', null);
         this.set('infoMessage', null);
         this.set('wordCount', null);
+        this.set('characterCount', null);
 
         // remove the onbeforeunload handler as it's only relevant whilst on
         // the editor route

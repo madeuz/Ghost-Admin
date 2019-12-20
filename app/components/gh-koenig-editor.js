@@ -21,6 +21,7 @@ export default Component.extend({
     onBodyChange() {},
     onEditorCreated() {},
     onWordCountChange() {},
+    onCharacterCountChange() {},
 
     actions: {
         focusTitle() {
