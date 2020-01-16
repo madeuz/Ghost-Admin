@@ -412,14 +412,23 @@ export default Component.extend(SettingsMenuMixin, {
                 return;
             }
 
-            this.savePost.perform().catch((error) => {
-                this.showError(error);
-                this.post.rollbackAttributes();
-            });
+            let imageNode = new Image();
+            imageNode.src = image;
+            imageNode.onload = () => {
+                this.set('post.featureImageWidth', imageNode.width);
+                this.set('post.featureImageHeight', imageNode.height);
+
+                this.savePost.perform().catch((error) => {
+                    this.showError(error);
+                    this.post.rollbackAttributes();
+                });
+            };
         },
 
         clearCoverImage() {
             this.set('post.featureImage', '');
+            this.set('post.featureImageWidth', '');
+            this.set('post.featureImageHeight', '');
 
             if (this.get('post.isNew')) {
                 return;
