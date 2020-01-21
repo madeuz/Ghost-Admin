@@ -87,10 +87,29 @@
             @placeholder="Type caption for video (optional)" />
     {{/if}}
 
-    {{#if videoSelector}}
-        {{component videoSelector
-            searchTerm=payload.searchTerm
-            select=(action "selectFromVideoSelector")
-            close=(action "closeVideoSelector")}}
+    {{#if isSelected}}
+        <strong style="font-family: sans-serif; margin: 0 10px;">
+            Preview image:
+            <span style="float: right; font-size: 12px;">
+                {{#if takingSnapshot}}
+                    <span color="#9baeb8">
+                        wait...
+                    </span>
+                {{else}}
+                    <a href="#" onclick={{action "takeSnapshot"}} style="color: #3eb0ef; box-shadow: none;">
+                        take snapshot
+                    </a>
+                {{/if}}
+            </span>
+        </strong>
+        <div>
+            {{#each payload.posters as |poster|}}
+                <span class="poster" style="float: left; display: inline-block; margin: 10px;">
+                    <a href="#" onclick={{action "selectPoster"}} style="box-shadow: none;">
+                        <img src={{poster}} style="max-width: 100px; {{if (eq poster payload.poster) "box-shadow: 0 0 0 2px #3eb0ef;"}}" />
+                    </a>
+                </span>
+            {{/each}}
+        </div>
     {{/if}}
 {{/koenig-card}}
