@@ -91,6 +91,9 @@
                     <div class="gh-list-header">Views</div>
                     <div class="gh-list-header">Last update</div>
                     <div class="gh-list-header">Authors</div>
+                    {{#if (gh-user-can-admin session.user)}}
+                        <div class="gh-list-header">Push</div>
+                    {{/if}}
                 </li>
             {{/if}}
 

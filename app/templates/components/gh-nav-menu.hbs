@@ -56,6 +56,19 @@
                 </li>
             {{/if}}
             <li>{{#link-to "staff" data-test-nav="staff"}}{{svg-jar "staff"}}Staff{{/link-to}}</li>
+            {{#if (gh-user-can-admin session.user)}}
+                {{!-- clicking the Content link whilst on the content screen should reset the filter --}}
+                {{#if (eq router.currentRouteName "push-messages")}}
+                    <li>{{#link-to "push-messages" data-test-nav="push-messages"}}{{svg-jar "signal-tower"}}Push Messages{{/link-to}}</li>
+                {{else}}
+                    <li>{{#link-to "push-messages" data-test-nav="push-messages"}}{{svg-jar "signal-tower"}}Push Messages{{/link-to}}</li>
+                {{/if}}
+                {{#if (eq router.currentRouteName "subscriptions")}}
+                    <li>{{#link-to "subscriptions" (query-params tag=null order=null) data-test-nav="subscriptions"}}{{svg-jar "members"}}Subscriptions{{/link-to}}</li>
+                {{else}}
+                    <li>{{#link-to "subscriptions" data-test-nav="subscriptions"}}{{svg-jar "members"}}Subscriptions{{/link-to}}</li>
+                {{/if}}
+            {{/if}}
         </ul>
         {{#if (gh-user-can-admin session.user)}}
             <ul class="gh-nav-list gh-nav-settings">

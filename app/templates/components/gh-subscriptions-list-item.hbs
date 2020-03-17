@@ -1,0 +1,29 @@
+{{#link-to "subscriptions.read" subscription.id class="gh-list-data gh-list-cellwidth-20" title="Show subscription"}}
+    <h3 class="gh-subscription-list-name">
+        {{gh-format-post-time this.subscription.createdAtUTC draft=true}}
+    </h3>
+{{/link-to}}
+
+{{#link-to "subscriptions.read" subscription.id class="gh-list-data gh-list-cellwidth-20" title="Show subscription"}}
+    <h3 class="gh-subscription-list-name">
+        {{gh-format-post-time this.subscription.updatedAtUTC draft=true}}
+    </h3>
+{{/link-to}}
+
+{{#link-to "subscriptions.read" subscription.id class="gh-list-data middarkgrey f8 gh-list-cellwidth-10" title="Show subscription"}}
+    <span title="{{this.subscription.ip}}">{{this.subscription.ip}}</span>
+{{/link-to}}
+
+{{#link-to "subscriptions.read" subscription.id class="gh-list-data middarkgrey f8 gh-list-cellwidth-10" title="Show subscription"}}
+    <span title="{{this.subscription.tag}}">{{this.subscription.tag}}</span>
+{{/link-to}}
+
+{{#link-to "subscriptions.read" subscription.id class="gh-list-data middarkgrey f8" title="Show subscription"}}
+    <span title="{{this.subscription.url}}">{{this.subscription.url}}</span>
+{{/link-to}}
+
+{{#link-to "subscriptions.read" subscription.id class="gh-list-data gh-list-cellwidth-min" title="Show subscription"}}
+    <div class="flex items-center justify-end w-100 h-100">
+        <span class="nr2">{{svg-jar "arrow-right" class="w6 h6 fill-midgrey pa1"}}</span>
+    </div>
+{{/link-to}}

@@ -63,6 +63,15 @@ Router.map(function () {
     });
     this.route('member', {path: '/members/:member_id'});
 
+    this.route('push-messages', function () {
+        this.route('new', {path: 'new/:post_id'});
+        this.route('read', {path: 'read/:message_id'});
+    });
+
+    this.route('subscriptions', function () {
+        this.route('read', {path: 'read/:subscription_id'});
+    });
+
     this.route('error404', {path: '/*path'});
 });
 

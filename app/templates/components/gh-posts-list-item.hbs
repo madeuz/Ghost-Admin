@@ -45,3 +45,9 @@
 {{#link-to "editor.edit" this.post.displayName this.post.id class="permalink gh-list-data gh-post-list-author" title="Edit this post"}}
     <span class="gh-content-entry-author">{{this.authorNames}}</span>
 {{/link-to}}
+
+{{#if (gh-user-can-admin session.user)}}
+    {{#link-to "push-messages.new" this.post.id class="permalink gh-list-data" title="Send Push Message"}}
+        <span class="nowrap">{{svg-jar "email-send"}}</span>
+    {{/link-to}}
+{{/if}}
