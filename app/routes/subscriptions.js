@@ -8,8 +8,6 @@ export default AuthenticatedRoute.extend({
     router: service(),
 
     queryParams: {
-        type: {refreshModel: true},
-        author: {refreshModel: true},
         tag: {refreshModel: true},
         order: {refreshModel: true}
     },

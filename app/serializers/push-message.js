@@ -4,6 +4,9 @@ import {pluralize} from 'ember-inflector';
 
 export default ApplicationSerializer.extend({
     attrs: {
+        clickURL: {key: 'click_url'},
+        expiryAtUTC: {key: 'expiry_at'},
+        scheduledAtUTC: {key: 'scheduled_at'},
         createdAtUTC: {key: 'created_at'},
         updatedAtUTC: {key: 'updated_at'}
     },

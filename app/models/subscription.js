@@ -12,4 +12,3 @@ export default Model.extend({
     createdAtUTC: attr('moment-utc'),
     updatedAtUTC: attr('moment-utc')
 });
-

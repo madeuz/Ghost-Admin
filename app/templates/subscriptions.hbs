@@ -4,35 +4,35 @@
         <section class="view-actions">
             <div class="gh-contentfilter">
                 {{#power-select
-                        selected=selectedTag
-                        options=availableTags
-                        searchField="name"
-                        onchange=(action "changeTag")
-                        tagName="div"
-                        classNames=tagClassNames
-                        triggerClass="gh-contentfilter-menu-trigger"
-                        dropdownClass="gh-contentfilter-menu-dropdown"
-                        searchPlaceholder="Search tags"
-                        matchTriggerWidth=false
-                        optionsComponent="power-select-vertical-collection-options"
-                        data-test-tag-select=true
-                as |tag|
+                    selected=selectedTag
+                    options=availableTags
+                    searchField="name"
+                    onchange=(action "changeTag")
+                    tagName="div"
+                    classNames=tagClassNames
+                    triggerClass="gh-contentfilter-menu-trigger"
+                    dropdownClass="gh-contentfilter-menu-dropdown"
+                    searchPlaceholder="Search tags"
+                    matchTriggerWidth=false
+                    optionsComponent="power-select-vertical-collection-options"
+                    data-test-tag-select=true
+                    as |tag|
                 }}
                     {{tag.name}}
                 {{/power-select}}
 
                 {{#power-select
-                        selected=selectedOrder
-                        options=availableOrders
-                        searchEnabled=false
-                        onchange=(action "changeOrder")
-                        tagName="div"
-                        classNames="gh-contentfilter-menu gh-contentfilter-sort"
-                        triggerClass="gh-contentfilter-menu-trigger"
-                        dropdownClass="gh-contentfilter-menu-dropdown"
-                        matchTriggerWidth=false
-                        data-test-order-select=true
-                as |order|
+                    selected=selectedOrder
+                    options=availableOrders
+                    searchEnabled=false
+                    onchange=(action "changeOrder")
+                    tagName="div"
+                    classNames="gh-contentfilter-menu gh-contentfilter-sort"
+                    triggerClass="gh-contentfilter-menu-trigger"
+                    dropdownClass="gh-contentfilter-menu-dropdown"
+                    matchTriggerWidth=false
+                    data-test-order-select=true
+                    as |order|
                 }}
                     {{order.name}}
                 {{/power-select}}
@@ -55,8 +55,8 @@
 
             {{#each subscriptionsInfinityModel as |subscription|}}
                 {{gh-subscriptions-list-item
-                        subscription=subscription
-                        data-test-subscription-id=subscription.id}}
+                    subscription=subscription
+                    data-test-subscription-id=subscription.id}}
             {{else}}
                 <li class="no-posts-box">
                     <div class="no-posts">
@@ -65,7 +65,7 @@
                             <h3>You have no subscriptions yet!</h3>
                         {{else}}
                             <h3>No subscriptions match the current filter</h3>
-                            {{#link-to "subscriptions" (query-params type=null author=null tag=null) class="gh-btn gh-btn-lg"}}
+                            {{#link-to "subscriptions" (query-params tag=null) class="gh-btn gh-btn-lg"}}
                                 <span>Show all subscriptions</span>
                             {{/link-to}}
                         {{/if}}
