@@ -1,6 +1,6 @@
 <section class="gh-canvas">
     <GhCanvasHeader class="gh-canvas-header post-header">
-        <h2 class="gh-canvas-title" data-test-screen-title>Subscriptions</h2>
+        <h2 class="gh-canvas-title" data-test-screen-title>Push Messages</h2>
         <section class="view-actions">
             <div class="gh-contentfilter">
                 {{#power-select
@@ -35,6 +35,8 @@
                     {{order.name}}
                 {{/power-select}}
             </div>
+
+            {{#link-to "push-messages.new" class="gh-btn gh-btn-green" data-test-new-push-message-button=true}}<span>New push message</span>{{/link-to}}
         </section>
     </GhCanvasHeader>
 

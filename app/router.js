@@ -64,7 +64,7 @@ Router.map(function () {
     this.route('member', {path: '/members/:member_id'});
 
     this.route('push-messages', function () {
-        this.route('new', {path: 'new/:post_id'});
+        this.route('new');
         this.route('read', {path: 'read/:message_id'});
     });
 

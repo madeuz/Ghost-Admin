@@ -84,7 +84,7 @@ export default Controller.extend({
         },
 
         openEditor(pushMessage) {
-            this.transitionToRoute('pushMessage.edit', 'pushMessage', pushMessage.get('id'));
+            this.transitionToRoute('push-message.edit', 'pushMessage', pushMessage.get('id'));
         }
     }
 });
