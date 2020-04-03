@@ -1,0 +1,22 @@
+/* Push messages list
+/* ---------------------------------------------------------- */
+
+textarea.gh-push-message-details-textarea {
+    max-width: 100%;
+}
+
+/* Push message details
+/* ---------------------------------------------------------- */
+
+.gh-push-message-icon-image-uploader .gh-image-uploader {
+    margin: 4px 0 0;
+    border: 1px solid var(--lightgrey);
+    min-height: 147px;
+}
+
+.gh-push-message-photo-image-uploader .gh-image-uploader {
+    margin: 4px 0 0;
+    border: 1px solid var(--lightgrey);
+    min-height: 400px;
+    max-width: 100%;
+}

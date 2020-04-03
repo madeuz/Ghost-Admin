@@ -1,4 +1,4 @@
-import Controller from '@ember/controller';
+import Controller, {inject as controller} from '@ember/controller';
 import {alias} from '@ember/object/computed';
 import {computed} from '@ember/object';
 import {get} from '@ember/object';
@@ -31,6 +31,8 @@ const ORDERS = [{
 
 export default Controller.extend({
 
+    pushMessageController: controller('push-messages.new'),
+
     session: service(),
     store: service(),
 
@@ -47,6 +49,8 @@ export default Controller.extend({
         this.availableTypes = TYPES;
         this.availableOrders = ORDERS;
     },
+
+    selectedPushMessage: alias('pushMessageController.pushMessage'),
 
     pushMessagesInfinityModel: alias('model'),
 

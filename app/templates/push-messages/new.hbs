@@ -1,0 +1,35 @@
+<section class="gh-canvas">
+    <form class="mb15">
+        <GhCanvasHeader class="gh-canvas-header">
+            <h2 class="gh-canvas-title" data-test-screen-title>
+                {{#link-to "push-messages.index" data-test-link="push-messages-back"}}Push Messages{{/link-to}}
+                <span>{{svg-jar "arrow-right"}}</span>
+                {{if pushMessage.title pushMessage.title "New Push Message"}}
+            </h2>
+            <section class="view-actions">
+                {{gh-task-button task=save type="button" class="gh-btn gh-btn-blue gh-btn-icon" data-test-button="save"}}
+            </section>
+        </GhCanvasHeader>
+        {{gh-push-message-settings-form pushMessage=pushMessage
+            setProperty=(action "setProperty")
+            showDeletePushMessageModal=(action "toggleDeletePushMessageModal")}}
+    </form>
+    <button class="gh-btn gh-btn-red gh-btn-icon mb15" {{action "toggleDeletePushMessageModal"}}>
+        <span>Delete push message</span>
+    </button>
+</section>
+
+{{#if showUnsavedChangesModal}}
+    {{gh-fullscreen-modal "leave-settings"
+        confirm=(action "leaveScreen")
+        close=(action "toggleUnsavedChangesModal")
+        modifier="action wide"}}
+{{/if}}
+
+{{#if showDeletePushMessageModal}}
+    {{gh-fullscreen-modal "delete-push-message"
+        model=pushMessage
+        confirm=(action "deletePushMessage")
+        close=(action "toggleDeletePushMessageModal")
+        modifier="action wide"}}
+{{/if}}

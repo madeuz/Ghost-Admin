@@ -1,0 +1,70 @@
+<h4 class="midlightgrey f-small fw5 ttu">Basic settings</h4>
+<div class="pa5 pt4 br4 shadow-1 bg-grouped-table mt2 flex flex-column flex-row-ns items-start justify-between gh-tag-basic-settings-form">
+    <div class="order-1 flex flex-column items-start mr5 w-100 w-50-m w-two-thirds-l">
+        {{#gh-form-group errors=pushMessage.errors hasValidated=pushMessage.hasValidated property="title"}}
+            <label for="push-message-title">Title</label>
+            {{gh-text-input
+                    id="push-message-title"
+                    name="title"
+                    value=(readonly scratchTitle)
+                    tabindex="1"
+                    input=(action (mut scratchTitle) value="target.value")
+                    focus-out=(action 'setProperty' 'title' scratchTitle)}}
+            {{gh-error-message errors=pushMessage.errors property="title"}}
+        {{/gh-form-group}}
+
+        {{#gh-form-group errors=pushMessage.errors hasValidated=pushMessage.hasValidated property="excerpt"}}
+            <label for="push-message-excerpt">Excerpt</label>
+            {{gh-textarea
+                    id="push-message-excerpt"
+                    name="excerpt"
+                    class="gh-push-message-details-textarea"
+                    tabindex="2"
+                    value=(readonly scratchExcerpt)
+                    input=(action (mut scratchExcerpt) value="target.value")
+                    focus-out=(action 'setProperty' 'excerpt' scratchExcerpt)
+            }}
+            {{gh-error-message errors=pushMessage.errors property="description"}}
+            <p>Maximum: <b>2000</b> characters. You’ve used {{gh-count-down-characters scratchExcerpt 2000}}</p>
+        {{/gh-form-group}}
+
+        {{#gh-form-group errors=pushMessage.errors hasValidated=pushMessage.hasValidated property="clickURL"}}
+            <label for="push-message-click-url">Click URL</label>
+            {{gh-text-input
+                    id="push-message-click-url"
+                    name="clickURL"
+                    value=(readonly scratchClickUrl)
+                    tabindex="3"
+                    input=(action (mut scratchClickUrl) value="target.value")
+                    focus-out=(action 'setProperty' 'clickURL' scratchClickUrl)}}
+            {{gh-error-message errors=pushMessage.errors property="clickURL"}}
+        {{/gh-form-group}}
+
+        {{#gh-form-group}}
+            <label for="push-message-photo">Push message photo</label>
+            {{gh-image-uploader-with-preview
+                    image=pushMessage.photo
+                    text="Upload push message photo"
+                    class="gh-push-message-photo-image-uploader"
+                    allowUnsplash=true
+                    update=(action "setPhoto")
+                    remove=(action "clearPhoto")}}
+        {{/gh-form-group}}
+    </div>
+    <div class="order-0 mb6 mb0-ns order-2-ns w-100 w-50-m w-third-l">
+        <label for="push-message-icon">Push message icon</label>
+        {{gh-image-uploader-with-preview
+                image=pushMessage.icon
+                text="Upload push message icon"
+                class="gh-push-message-icon-image-uploader"
+                update=(action "setIcon")
+                remove=(action "clearIcon")}}
+    </div>
+</div>
+
+<h4 class="midlightgrey f-small fw5 ttu mt15">Message sending settings</h4>
+<div class="pa5 pt4 br4 shadow-1 bg-grouped-table mt2 flex flex-column flex-row-ns items-start justify-between">
+    <div class="flex flex-column items-start mr5 w-100 w-50-m w-two-thirds-l">
+
+    </div>
+</div>
