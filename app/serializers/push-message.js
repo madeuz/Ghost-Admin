@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import ApplicationSerializer from 'ghost-admin/serializers/application';
+import {camelize} from '@ember/string';
 import {pluralize} from 'ember-inflector';
 
 export default ApplicationSerializer.extend({
@@ -24,5 +25,10 @@ export default ApplicationSerializer.extend({
             }
         }
         return this._super(...arguments);
+    },
+
+    payloadKeyFromModelName(modelName) {
+        return camelize(modelName).toLowerCase();
     }
 });
+

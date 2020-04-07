@@ -19,7 +19,7 @@ export default RESTSerializer.extend({
         options.includeId = true;
 
         // We have a plural root in the API
-        let root = pluralize(type.modelName);
+        let root = pluralize(this.payloadKeyFromModelName((type.modelName)));
         let data = this.serialize(record, options);
 
         hash[root] = [data];

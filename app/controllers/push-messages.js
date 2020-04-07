@@ -31,7 +31,7 @@ const ORDERS = [{
 
 export default Controller.extend({
 
-    pushMessageController: controller('push-messages.new'),
+    pushMessageController: controller('pushMessages.new'),
 
     session: service(),
     store: service(),
